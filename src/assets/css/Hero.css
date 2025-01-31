@@ -1,0 +1,51 @@
+.text-container {
+  background: url("https://source.unsplash.com/800x600/?parking-lot")
+    center/cover no-repeat;
+  color: white;
+  display: flex;
+}
+
+/* .hero-section {
+  padding: 50px 0;
+  background: url("../img/mainpark.png") center/cover no-repeat;
+
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+ 
+  background-blend-mode: multiply;
+  background-color: rgba(81, 79, 79, 0.309); 
+} */
+
+.carousel img {
+  height: 80vh;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    text-align: center;
+  }
+}
+
+.card-section {
+  margin-top: 50px;
+  padding: 80px 0px ;
+
+  background-color: #f6f7f8;
+}
+.card-section p{
+  padding: 5px;
+font-weight: 100;}
+
+.herbtn {
+  background-color: #14be3d !important;
+  border: none;
+  text-decoration: none;
+}
+

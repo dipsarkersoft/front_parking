@@ -124,12 +124,12 @@ export const ParingCreateCom = () => {
                     <div key={slot} className="col-1 p-1">
                       <button
                         className={`btn w-100 ${
-                          status === "Book" ? "btn-danger" : "btn-success"
+                          status === "B" ? "btn-danger" : "btn-success"
                         }`
                     }   onClick={() => setParkingSlot(slot)}
-                        disabled={status === "Book"}
+                        disabled={status === "B"}
                       >
-                        {status=='Book'?
+                        {status=='B'?
                         <> <RxCross1 color="#fffff" /></>
                         :<>
                          

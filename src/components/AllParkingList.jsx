@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { allParkingView, getCategoryByid } from '../api/allapi.js'
+import { allParkingView } from '../api/allapi.js'
 import { useAuth } from '../contex/useAuth.jsx'
 import dateFormat from"dateformat"
 import { useNavigate } from 'react-router-dom'

@@ -14,6 +14,7 @@ import { GetCarPage } from "./pages/GetCarPage.jsx";
 import { useAuth } from "./contex/useAuth.jsx";
 import { PaymentSucess } from "./pages/PaymentSucess.jsx";
 import PaymentFailed from "./pages/PaymentFailed.jsx";
+import { ContactPage } from "./pages/Contact.jsx";
 
 function App() {
   const { user } = useAuth();
@@ -53,6 +54,7 @@ function App() {
           <Route path="/service" element={<ServicePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </BrowserRouter>
     </>

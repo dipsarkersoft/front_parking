@@ -126,7 +126,7 @@ export const ParingCreateCom = () => {
                         className={`btn w-100 ${
                           status === "Book" ? "btn-danger" : "btn-success"
                         }`
-                    }   onClick={() => setParkingSlot(status)}
+                    }   onClick={() => setParkingSlot(slot)}
                         disabled={status === "Book"}
                       >
                         {status=='Book'?

@@ -83,6 +83,12 @@ export const authenticated_user = async (id, token) => {
   // category
 
 
+  export const createCategory = async () => {
+    const { data } = await axios.get(`${URL}category/all/`);
+    return data;
+  };
+
+
   export const allCategoryAPI = async () => {
     const { data } = await axios.get(`${URL}category/all/`);
     return data;

@@ -106,6 +106,10 @@ export const AllParkingList = () => {
                <button className="btn btn-success btn-sm me-2" onClick={() => handleReview(record.id)}>
                   Review
                 </button>
+
+                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(record.id)}>
+                  Delete
+                </button>
               </> 
               :
 
@@ -113,12 +117,13 @@ export const AllParkingList = () => {
                 <button className="btn btn-success btn-sm me-2" onClick={() => handleGetCar(record.id)}>
                   GetCar
                 </button>
+
+                
+
                </>}
 
                
-                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(record.id)}>
-                  Delete
-                </button>
+                
               </td>   
 
               </>

@@ -72,7 +72,7 @@ export const ParingCreateCom = () => {
   return (
     <div className="container mt-4">
       <div className="row">
-        {/* Left side form */}
+        
         <div className="col-md-6">
           <div className="card p-4 shadow-sm">
             <h5 className="mb-3">Select Vehicle Details</h5>
@@ -98,7 +98,7 @@ export const ParingCreateCom = () => {
               </select>
             </div>
 
-            {/* Car Name Input */}
+         
             <div className="mb-3">
               <label className="form-label">Car Name</label>
               <input
@@ -110,7 +110,7 @@ export const ParingCreateCom = () => {
               />
             </div>
 
-            <h3>Available Seat List</h3>
+            <h3>Available Slot List</h3>
 
 
             {categoryinf?.available_slots_list ? (
@@ -121,7 +121,9 @@ export const ParingCreateCom = () => {
 
 
                    
-                    <div key={slot} className="col-1 p-1">
+                    <div key={slot} className="col-2 m-1 ">
+                      
+                      <p className="text-center">{slot}</p>
                       <button
                         className={`btn w-100 ${
                           status === "B" ? "btn-danger" : "btn-success"
@@ -129,6 +131,7 @@ export const ParingCreateCom = () => {
                     }   onClick={() => setParkingSlot(slot)}
                         disabled={status === "B"}
                       >
+
                         {status=='B'?
                         <> <RxCross1 color="#fffff" /></>
                         :<>
@@ -145,6 +148,9 @@ export const ParingCreateCom = () => {
           ) : (
             <p>No category selected</p>
           )}
+
+
+
           </div>
         </div>
 
@@ -173,7 +179,7 @@ export const ParingCreateCom = () => {
               {categoryinf?.available_slots || "Not selected"}
             </li>
 
-            {/* Overview */}
+          
             <h6 className="mt-3">Overview</h6>
             <ul className="list-group mb-3">
               <li className="list-group-item">

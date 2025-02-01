@@ -17,7 +17,7 @@ export const ReviewCom = () => {
           id: 1,
           image: image1,
           name: 'John Doe',
-          review: 'This is the best parking system I have used. Extremely reliable and easy to manage.',
+          review: 'Easy to navigate, fast booking, and great customer support service.',
           rating: 5
         },
         {
@@ -31,21 +31,21 @@ export const ReviewCom = () => {
           id: 3,
           image: image3,
           name: 'Mark Johnson',
-          review: 'Very convenient, user-friendly, and highly recommend for anyone looking for parking solutions.',
+          review: 'Efficient, easy to use, and reliable parking management system.',
           rating: 5
         },
         {
             id: 4,
             image:  image4,
             name: 'Mark Johnson',
-            review: 'Very convenient, user-friendly, and highly recommend for anyone looking for parking solutions.',
+            review: 'Easy to navigate, fast booking, and great customer support service..',
             rating: 5
           },
           {
             id: 5,
             image:  image3,
             name: 'Mark Johnson',
-            review: 'Very convenient, user-friendly, and highly recommend for anyone looking for parking solutions.',
+            review: 'Efficient, easy to use, and reliable parking management system.',
             rating: 5
           },
         // Add more reviews as needed
@@ -54,7 +54,7 @@ export const ReviewCom = () => {
     <div>
 
 
-<div className="container mt-5 bg-success">
+<div className="container my-5 ">
       <div className="text-center mb-4">
         <h2>What Our Users Say</h2>
         <p className="lead">Real reviews from our satisfied customers.</p>

@@ -84,9 +84,24 @@ export const authenticated_user = async (id, token) => {
   // category
 
 
-  export const createCategory = async () => {
-    const { data } = await axios.get(`${URL}category/all/`);
-    return data;
+  export const createCategory = async (token,body) => {
+    try {
+      // console.log(body)
+      const { data } = await axios.post(
+        `${URL}category/create/`,
+  
+        body,
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      return data;
+    } catch (err) {
+      // console.log(err);
+    }
   };
 
 

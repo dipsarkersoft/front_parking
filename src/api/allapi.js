@@ -1,8 +1,8 @@
 import axios from "axios";
 import { data } from "react-router-dom";
 
-// export const URL = "https://backend-parking-p4dd.onrender.com/";
-export const URL = "http://127.0.0.1:8000/";
+export const URL = "https://backend-parking-p4dd.onrender.com/";
+// export const URL = "http://127.0.0.1:8000/";
 
 
 export const RegisterAPI = async (

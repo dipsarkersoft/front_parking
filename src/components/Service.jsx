@@ -57,8 +57,7 @@ export const Service = () => {
                 <div className="text-end">
                   <h3 className="card-title py-2 ">Valet Parking</h3>
                   <p className="card-text">
-                    Praesent molestie neque et vitae massa porttitor consequat.
-                    Donec pulvinar dolor magna urna.
+                  A service where attendants park and retrieve vehicles for convenience.
                   </p>
                 </div>
                 
@@ -78,8 +77,7 @@ export const Service = () => {
                 <div className="text-end">
                   <h3 className="card-title ">Short-Term Lot</h3>
                   <p className="card-text">
-                    Praesent molestie neque et vitae massa porttitor consequat.
-                    Donec pulvinar dolor magna urna.
+                  Close parking for quick visits, with higher hourly rates.
                   </p>
                 </div>
                 
@@ -97,8 +95,7 @@ export const Service = () => {
                 <div className="text-end">
                   <h3 className="card-title">Long-Term Lot</h3>
                   <p className="card-text">
-                    Praesent molestie neque et vitae massa porttitor consequat.
-                    Donec pulvinar dolor magna urna.
+                  Ideal for extended stays, typically offering lower daily rates.
                   </p>
                 </div>
                 
@@ -130,8 +127,7 @@ export const Service = () => {
                 <div>
                   <h3 className="card-title">Economy Lot</h3>
                   <p className="card-text">
-                    Praesent molestie neque et vitae massa porttitor consequat.
-                    Donec pulvinar dolor magna urna.
+                  Budget-friendly parking, often farther from main destinations.
                   </p>
                 </div>
               </div>
@@ -148,8 +144,7 @@ export const Service = () => {
                 <div>
                   <h3 className="card-title">Premium Parking</h3>
                   <p className="card-text">
-                    Praesent molestie neque et vitae massa porttitor consequat.
-                    Donec pulvinar dolor magna urna.
+                  Close parking for quick visits, with higher hourly rates.
                   </p>
                 </div>
               </div>
@@ -168,8 +163,7 @@ export const Service = () => {
                 <div>
                   <h3 className="card-title">Parking Garage</h3>
                   <p className="card-text">
-                    Praesent molestie neque et vitae massa porttitor consequat.
-                    Donec pulvinar dolor magna urna.
+                  A service where attendants park and retrieve vehicles for convenience.
                   </p>
                 </div>
               </div>

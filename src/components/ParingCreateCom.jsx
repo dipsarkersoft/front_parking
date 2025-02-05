@@ -5,14 +5,21 @@ import { QRCodeCanvas } from "qrcode.react";
 import { RxCross1 } from "react-icons/rx";
 import { FaCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { DatePicker, Space } from "antd";
+
+const { RangePicker } = DatePicker;
 
 export const ParingCreateCom = () => {
+
   const [carName, setCarName] = useState("");
   const [parkingSlot, setParkingSlot] = useState("");
   const [categories, setCategories] = useState([]);
   const [categoryinf, setCategoryinf] = useState(null);
   const [createRes, setCreateRes] = useState(null);
   const [qrValue, SetQrvalue] = useState(null);
+  const [dateRange, setDateRange] = useState([]);
+  const [availableSlots, setAvailableSlots] = useState([]);
+
   const navigate=useNavigate()
 
   const token = localStorage.getItem("token");
@@ -26,15 +33,33 @@ export const ParingCreateCom = () => {
     getcat();
   }, []);
 
+
+  const handleDateChange = (v) => {
+    
+
+    if (v) {
+      setDateRange([
+        v[0].format("YYYY-MM-DD HH:mm"),
+        v[1].format("YYYY-MM-DD HH:mm"),
+      ]);
+    } 
+    else {
+      setDateRange([]);
+    }
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!categoryinf || !carName ||!parkingSlot) {
+    if (!categoryinf || !carName ) {
       toast.error("All Inf Required");
     } else {
       const body = {
         "category": categoryinf.id,
         "car_name": carName,
-        "slot":parkingSlot
+        "slot":parkingSlot,
+        "start_park": dateRange[0],
+        "end_park": dateRange[1],
       };
 
       const data = await createParking(token, body);
@@ -69,6 +94,7 @@ export const ParingCreateCom = () => {
     }
   };
 
+  
   return (
     <div className="container mt-4">
       <div className="row">
@@ -109,45 +135,50 @@ export const ParingCreateCom = () => {
                 onChange={(e) => setCarName(e.target.value)}
               />
             </div>
+            <div className="mb-3">
 
-            <h3>Available Slot List</h3>
-
-
-            {categoryinf?.available_slots_list ? (
-            <div className="container border m-3">
-              <div className="row p-3">
-                {Object.entries(categoryinf.available_slots_list).map(
-                  ([slot, status], index) => (
-
-
-                   
-                    <div key={slot} className="col-2 m-1 ">
-                      
-                      <p className="text-center">{slot}</p>
-                      <button
-                        className={`btn w-100 ${
-                          status === "B" ? "btn-danger" : "btn-success"
-                        }`
-                    }   onClick={() => setParkingSlot(slot)}
-                        disabled={status === "B"}
-                      >
-
-                        {status=='B'?
-                        <> <RxCross1 color="#fffff" /></>
-                        :<>
-                         
-                        <FaCheck color="#e91e63" />
-                        </>}
-                        
-                      </button>
-                    </div>
-                  )
-                )}
-              </div>
+              <label className="form-label text-danger fw-semibold" >If You Book a Slot In Advance Than Select Start Date and End Data</label>
+              <Space direction="vertical" size={12}>
+                <RangePicker
+                  showTime={{ format: "HH:mm" }}
+                  format="YYYY-MM-DD HH:mm"
+                  onChange={handleDateChange}
+                />
+              </Space>
             </div>
-          ) : (
-            <p>No category selected</p>
-          )}
+
+
+        { categoryinf?.available_slots_list ? (
+              <>
+                <h3>Available Slot List</h3>
+                <div className="container border m-3">
+                  <div className="row p-3">
+                    {Object.entries(categoryinf.available_slots_list).map(
+                      ([slot, status]) => (
+                        <div key={slot} className="col-2 m-1">
+                          <p className="text-center">{slot}</p>
+                          <button
+                            className={`btn w-100 ${
+                              status === "B" ? "btn-danger" : "btn-success"
+                            }`}
+                            onClick={() => setParkingSlot(slot)}
+                            disabled={status === "B"}
+                          >
+                            {status === "B" ? (
+                              <RxCross1 color="#ffffff" />
+                            ) : (
+                              <FaCheck color="#e91e63" />
+                            )}
+                          </button>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <p className="text-muted">Select a date range to see slots</p>
+            )}   
 
 
 

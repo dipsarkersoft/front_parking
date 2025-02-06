@@ -2,7 +2,7 @@ import axios from "axios";
 import { data } from "react-router-dom";
 
 export const URL = "https://backend-parking-p4dd.onrender.com/";
-// export const URL = "http://127.0.0.1:8000/";
+//export const URL = "http://127.0.0.1:8000/";
 
 
 export const RegisterAPI = async (
@@ -179,6 +179,31 @@ export const backVehicals = async (token, body,id) => {
     console.log(data)
   };
   
+
+  export const availableSlotAPI=async(token,catid,st,et)=>{
+
+    try{
+      const apiUrl = `${URL}parking/availableSlot/?category_id=${catid}&start_time=${st}&end_time=${et}`
+
+      const {data}=await axios.get(apiUrl, {
+        headers: {
+          Authorization: `Token ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+
+      return data
+
+      
+
+
+    }
+
+    catch(err){
+
+    }
+
+  }
   
   
   export const cheakTotalBill = async (token,body,id) => {

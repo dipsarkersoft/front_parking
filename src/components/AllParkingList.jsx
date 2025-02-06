@@ -5,7 +5,6 @@ import dateFormat from "dateformat";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
-
 export const AllParkingList = () => {
   const token = localStorage.getItem("token");
   const [res, setRes] = useState([]);
@@ -40,116 +39,113 @@ export const AllParkingList = () => {
   }, []);
 
   return (
-//     <div>
-//       <div className="container mt-4">
-//         <h2>Parking Records</h2>
-//         <table className="table table-bordered table-hover">
-//           <thead className="table-dark">
-//             <tr>
-//               <th>ID</th>
-//               <th>Car Name</th>
+    //     <div>
+    //       <div className="container mt-4">
+    //         <h2>Parking Records</h2>
+    //         <table className="table table-bordered table-hover">
+    //           <thead className="table-dark">
+    //             <tr>
+    //               <th>ID</th>
+    //               <th>Car Name</th>
 
-//               <th>Start Park</th>
-//               <th>End Park</th>
-//               <th>Total Price (TK )</th>
-//               <th>Status</th>
-//               <th>Action</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {res.map((record) => (
-//               <tr key={record.id}>
-//                 <td>{record.id}</td>
-//                 <td>{record.car_name}</td>
+    //               <th>Start Park</th>
+    //               <th>End Park</th>
+    //               <th>Total Price (TK )</th>
+    //               <th>Status</th>
+    //               <th>Action</th>
+    //             </tr>
+    //           </thead>
+    //           <tbody>
+    //             {res.map((record) => (
+    //               <tr key={record.id}>
+    //                 <td>{record.id}</td>
+    //                 <td>{record.car_name}</td>
 
-//                 <td>{dateFormat(record.start_park)}</td>
-//                 <td>
-//                   {record.end_park ? dateFormat(record.end_park) : "Ongoing"}
-//                 </td>
+    //                 <td>{dateFormat(record.start_park)}</td>
+    //                 <td>
+    //                   {record.end_park ? dateFormat(record.end_park) : "Ongoing"}
+    //                 </td>
 
-//                 <td>TK {record.total_price}</td>
-//                 <td>
-//                   <span
-                  
-//                     className={`badge ${
-//                       record.is_complete == true
-//                         ? "bg-success" 
-//                         : record.start_park && record.end_park && new Date() < new Date(record.start_park)
-//                         ? "bg-warning" 
-//                         : "bg-info" 
-//                     }`}
-//                   >
-//                     {
-//                       record.is_complete == true
-//                         ? "Completed"
-//                         :  new Date() < new Date( record.start_park)  &&  record.end_park && !record.is_complete
-//                         ? "Pending"
-//                         : "In Progress" 
-//                     }
-//                   </span>
-//                 </td>
-//                 <td>
-//                 {user ? (
-//   <>
-//     <td>
-      
-      
+    //                 <td>TK {record.total_price}</td>
+    //                 <td>
+    //                   <span
 
-//       { 
-//        new Date() < new Date( record.start_park)  &&  record.end_park && !record.is_complete ? (
-        
-//         <small>Parking In Pending  </small>
-//       ) 
-//       :
+    //                     className={`badge ${
+    //                       record.is_complete == true
+    //                         ? "bg-success"
+    //                         : record.start_park && record.end_park && new Date() < new Date(record.start_park)
+    //                         ? "bg-warning"
+    //                         : "bg-info"
+    //                     }`}
+    //                   >
+    //                     {
+    //                       record.is_complete == true
+    //                         ? "Completed"
+    //                         :  new Date() < new Date( record.start_park)  &&  record.end_park && !record.is_complete
+    //                         ? "Pending"
+    //                         : "In Progress"
+    //                     }
+    //                   </span>
+    //                 </td>
+    //                 <td>
+    //                 {user ? (
+    //   <>
+    //     <td>
 
-//       (
-//         <>
-//           {record.is_complete ? (
-//             <>
-//               <button
-//                 className="btn btn-success btn-sm me-2"
-//                 onClick={() => handleReview(record.id)}
-//               >
-//                 Review
-//               </button>
+    //       {
+    //        new Date() < new Date( record.start_park)  &&  record.end_park && !record.is_complete ? (
 
-//               <button
-//                 className="btn btn-danger btn-sm"
-//                 onClick={() => handleDelete(record.id)}
-//               >
-//                 Delete
-//               </button>
-//             </>
-//           ) 
-//           :
-//            (
-//             <>
-//               <button
-//                 className="btn btn-success btn-sm me-2"
-//                 onClick={() => handleGetCar(record.id)}
-//               >
-//                 GetCar
-//               </button>
-//             </>
-//           )}
-//         </>
-//       )}
-//     </td>
-//   </>
-// ) : (
-//   <></>
-// )}
+    //         <small>Parking In Pending  </small>
+    //       )
+    //       :
 
-//                 </td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     </div>
+    //       (
+    //         <>
+    //           {record.is_complete ? (
+    //             <>
+    //               <button
+    //                 className="btn btn-success btn-sm me-2"
+    //                 onClick={() => handleReview(record.id)}
+    //               >
+    //                 Review
+    //               </button>
 
+    //               <button
+    //                 className="btn btn-danger btn-sm"
+    //                 onClick={() => handleDelete(record.id)}
+    //               >
+    //                 Delete
+    //               </button>
+    //             </>
+    //           )
+    //           :
+    //            (
+    //             <>
+    //               <button
+    //                 className="btn btn-success btn-sm me-2"
+    //                 onClick={() => handleGetCar(record.id)}
+    //               >
+    //                 GetCar
+    //               </button>
+    //             </>
+    //           )}
+    //         </>
+    //       )}
+    //     </td>
+    //   </>
+    // ) : (
+    //   <></>
+    // )}
 
-<div>
+    //                 </td>
+    //               </tr>
+    //             ))}
+    //           </tbody>
+    //         </table>
+    //       </div>
+    //     </div>
+
+    <div>
       <div className="container mt-4">
         <h2>Parking Records</h2>
         <table className="table table-bordered table-hover">
@@ -166,76 +162,124 @@ export const AllParkingList = () => {
           </thead>
           <tbody>
             {res.map((record) => {
-              const now = moment();
-              const startPark = moment.utc(record.start_park);
-              const endPark = moment.utc(record.end_park);
+              const now = moment().format("YYYY-MM-DD HH:mm:ss");
+              const sPark = moment
+                .utc(record.start_park)
+                .format("YYYY-MM-DD HH:mm:ss");
+              const ePark = moment
+                .utc(record.end_park)
+                .format("YYYY-MM-DD HH:mm:ss");
+              console.log(sPark < now);
+              // console.log("ss", now.format("YYYY-MM-DD HH:mm:ss"))
 
               return (
                 <tr key={record.id}>
                   <td>{record.id}</td>
                   <td>{record.car_name}</td>
-                  <td>{moment.utc(record.start_park).format("YYYY-MM-DD HH:mm:ss")}</td>
-                 
-                  <td>{record.end_park 
-                  ?moment.utc(record.end_park).format("YYYY-MM-DD HH:mm:ss")
-                  : "Ongoing"}</td>
+                  <td>{sPark}</td>
 
+                  <td>{ePark}</td>
 
                   <td>TK {record.total_price}</td>
                   <td>
-                    <span
-                      className={`badge ${
-                        record.is_complete
-                          ? "bg-success"
-                          : startPark.isValid() && endPark.isValid() && now.isBefore(startPark)
-                          ? "bg-warning"
-                          : "bg-info"
-                      }`}
-                    >
-                      {record.is_complete
-                        ? "Completed"
-                        : startPark.isValid() && endPark.isValid() && now.isBefore(startPark)
-                        ? "Pending"
-                        : "In Progress"}
-                    </span>
-                  </td>
-                  <td>
-                    {user ? (
+                    {record.is_complete ? (
                       <>
-                        {startPark.isValid() && endPark.isValid() && now.isBefore(startPark) && !record.is_complete ? (
-                          <small>Parking In Pending</small>
+                        <span className="badge rounded-pill text-bg-success">
+                          Success
+                        </span>{" "}
+                      </>
+                    ) : (
+                      <>
+                        {sPark > now ? (
+                          <>
+                            <span className="badge rounded-pill text-bg-info">
+                              Pending
+                            </span>{" "}
+                          </>
                         ) : (
                           <>
-                            {record.is_complete ? (
-                              <>
-                                <button
-                                  className="btn btn-success btn-sm me-2"
-                                  onClick={() => handleReview(record.id)}
-                                >
-                                  Review
-                                </button>
-
-                                <button
-                                  className="btn btn-danger btn-sm"
-                                  onClick={() => handleDelete(record.id)}
-                                >
-                                  Delete
-                                </button>
-                              </>
-                            ) : (
-                              <button
-                                className="btn btn-success btn-sm me-2"
-                                onClick={() => handleGetCar(record.id)}
-                              >
-                                GetCar
-                              </button>
-                            )}
+                            <>
+                              <span className="badge rounded-pill text-bg-warning">
+                                Ongoing
+                              </span>{" "}
+                            </>
                           </>
                         )}
                       </>
-                    ) : (
-                      <></>
                     )}
+                  </td>
+                  <td>
+
+
+                    {/* {record.is_complete ? 
+                      <>
+                        <button
+                          className="btn btn-success btn-sm me-2"
+                          onClick={() => handleReview(record.id)}
+                        >
+                          Review
+                        </button>
+
+                        <button
+                          className="btn btn-danger btn-sm"
+                          onClick={() => handleDelete(record.id)}
+                        >
+                          Delete
+                        </button>
+                      </>
+                     
+                    :
+                    
+                      <>
+                        <button
+                          className="btn btn-success btn-sm me-2"
+                          onClick={() => handleGetCar(record.id)}
+                        >
+                          GetCar
+                        </button>
+                      </>
+
+                    } */}
+
+                 <td>
+                    {record.is_complete ? (
+                      <>
+                       <button
+                          className="btn btn-success btn-sm me-2"
+                          onClick={() => handleReview(record.id)}
+                        >
+                          Review
+                        </button>
+
+                        <button
+                          className="btn btn-danger btn-sm"
+                          onClick={() => handleDelete(record.id)}
+                        >
+                          Delete
+                        </button>
+                        
+                      </>
+                    ) : (
+                      <>
+                        {sPark > now ? (
+                          <>
+                            <p>Parking In Pending</p>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                          className="btn btn-success btn-sm me-2"
+                          onClick={() => handleGetCar(record.id)}
+                        >
+                          GetCar
+                        </button>
+                          </>
+                        )}
+                      </>
+                    )}
+                  </td>
+
+
                   </td>
                 </tr>
               );
@@ -244,8 +288,5 @@ export const AllParkingList = () => {
         </table>
       </div>
     </div>
-
-
-
   );
 };

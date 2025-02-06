@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { allCategoryAPI, createParking } from "../api/allapi.js";
+import { allCategoryAPI, availableSlotAPI, createParking } from "../api/allapi.js";
 import toast from "react-hot-toast";
 import { QRCodeCanvas } from "qrcode.react";
 import { RxCross1 } from "react-icons/rx";
@@ -29,9 +29,18 @@ export const ParingCreateCom = () => {
     setCategories(data);
   };
 
-  useEffect(() => {
-    getcat();
-  }, []);
+  const getavailableSlot = async () => {
+    const st= dateRange[0]
+    const et= dateRange[1]
+    const catid= categoryinf.id
+
+    const {data} = await availableSlotAPI(token,catid,st,et);
+    setAvailableSlots(data);
+   
+
+  }
+
+
 
 
   const handleDateChange = (v) => {
@@ -39,21 +48,24 @@ export const ParingCreateCom = () => {
 
     if (v) {
       setDateRange([
-        v[0].format("YYYY-MM-DD HH:mm"),
-        v[1].format("YYYY-MM-DD HH:mm"),
+        v[0].format("YYYY-MM-DDTHH:mm-ss"),
+        v[1].format("YYYY-MM-DDTHH:mm-ss"),        
+        
       ]);
     } 
     else {
       setDateRange([]);
     }
   };
+console.log(dateRange[0],dateRange[1])
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!categoryinf || !carName ) {
       toast.error("All Inf Required");
-    } else {
+    } 
+    else {
       const body = {
         "category": categoryinf.id,
         "car_name": carName,
@@ -73,9 +85,6 @@ export const ParingCreateCom = () => {
         
       }
 
-      // console.log("Selected Category:", categoryinf);
-      // console.log("Car Name:", carName);
-      // console.log("Parking Slot:", parkingSlot);
     }
   };
 
@@ -94,7 +103,19 @@ export const ParingCreateCom = () => {
     }
   };
 
-  
+  useEffect(() => {
+    getcat();
+  }, []);
+
+
+  useEffect(() => {
+    if (categoryinf && dateRange.length === 2) {
+      getavailableSlot();
+    }
+  }, [categoryinf, dateRange]);
+
+
+
   return (
     <div className="container mt-4">
       <div className="row">
@@ -137,7 +158,7 @@ export const ParingCreateCom = () => {
             </div>
             <div className="mb-3">
 
-              <label className="form-label text-danger fw-semibold" >If You Book a Slot In Advance Than Select Start Date and End Data</label>
+              <label className="form-label text-danger fw-semibold">  Select Your Parking Date to Sea Available </label>
               <Space direction="vertical" size={12}>
                 <RangePicker
                   showTime={{ format: "HH:mm" }}
@@ -147,38 +168,32 @@ export const ParingCreateCom = () => {
               </Space>
             </div>
 
+            {/* {console.log(availableSlots)} */}
 
-        { categoryinf?.available_slots_list ? (
-              <>
-                <h3>Available Slot List</h3>
-                <div className="container border m-3">
-                  <div className="row p-3">
-                    {Object.entries(categoryinf.available_slots_list).map(
-                      ([slot, status]) => (
-                        <div key={slot} className="col-2 m-1">
-                          <p className="text-center">{slot}</p>
-                          <button
-                            className={`btn w-100 ${
-                              status === "B" ? "btn-danger" : "btn-success"
-                            }`}
-                            onClick={() => setParkingSlot(slot)}
-                            disabled={status === "B"}
-                          >
-                            {status === "B" ? (
-                              <RxCross1 color="#ffffff" />
-                            ) : (
-                              <FaCheck color="#e91e63" />
-                            )}
-                          </button>
-                        </div>
-                      )
-                    )}
-                  </div>
-                </div>
-              </>
-            ) : (
-              <p className="text-muted">Select a date range to see slots</p>
-            )}   
+
+{availableSlots.length > 0 ? (
+  <>
+    <h3>Available Slot List</h3>
+    <div className="container border m-3">
+      <div className="row p-3">
+        {availableSlots.map((slot) => (
+          <div key={slot.id} className="col-2 m-1">
+            <p className="text-center">{slot.slot_number}</p>
+            <button
+              className="btn btn-success w-100"
+              onClick={() => setParkingSlot(slot.slot_number)}
+            >
+              <FaCheck color="#e91e63" />
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </>
+) : (
+  <p className="text-muted">Select a date range to see slots</p>
+)}
+
 
 
 

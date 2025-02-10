@@ -9,7 +9,6 @@ export const Service = () => {
   const AllCategory = async () => {
     const data = await allCategoryAPI();
     setAllCat(data);
-    console.log(data);
   };
 
   useState(() => {
@@ -21,8 +20,8 @@ export const Service = () => {
       <div className="container mt-4">
         <h2 className="mb-3">Vehicle Categories All list and Price </h2>
 
-        <table className="table table-bordered table-hover">
-          <thead className="table-dark">
+        <table className="table tble table-bordered table-hover">
+          <thead className="">
             <tr>
               <th>#</th>
               <th>Name</th>

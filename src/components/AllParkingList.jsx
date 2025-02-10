@@ -185,7 +185,7 @@ export const AllParkingList = () => {
                     {record.is_complete ? (
                       <>
                         <span className="badge rounded-pill text-bg-success">
-                          Success
+                          Completed
                         </span>{" "}
                       </>
                     ) : (

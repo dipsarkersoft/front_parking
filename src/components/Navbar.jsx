@@ -15,8 +15,8 @@ export const Navbar = () => {
 
   
   return (
-    <div className="container-fluid bg-dark ">
-      <nav className="container navbar navbar-expand-lg  navbar-dark  shadow-sm sticky-top">
+    <div className="container-fluid BGC shadow-sm">
+      <nav className="container navbar navbar-expand-lg  text-white  sticky-top">
         <div className="container">
           <Link className="navbar-brand" to={"/"}>
             PARKING
@@ -80,7 +80,7 @@ export const Navbar = () => {
                     )}
                   </li>
 
-                  <div className="btn-group bg-secondary">
+                  <div className="btn-group">
                     <button
                       className="btn btn-secondary btn-sm dropdown-toggle"
                       type="button"
@@ -89,7 +89,7 @@ export const Navbar = () => {
                     >
                       Profile
                     </button>
-                    <ul className="dropdown-menu   bg-secondary">
+                    <ul className="dropdown-menu  dpdown ">
                       <li>
                         <Link className="nav-link" to={"/profile"}>
                           My Profile
@@ -133,3 +133,6 @@ export const Navbar = () => {
     </div>
   );
 };
+
+
+

@@ -30,11 +30,11 @@ export const GetCarComp = () => {
         setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
       }, 1000);
 
-      // Auto-clear after 5 minutes
+     
       setTimeout(() => {
         setCheakbilInf(null);
         toast.error("Time expired! Please scan QR code again.");
-      }, 300000); // 5 minutes
+      }, 300000); 
 
       return () => clearInterval(timer);
     }
@@ -67,6 +67,8 @@ export const GetCarComp = () => {
       const res=await cheakTotalBill(token,body,id)
 
       setCheakbilInf(res);
+      toast.error(res.message);
+      console.log(cheakbilInf)
     } 
     else {
       toast.error("No valid QR code.");

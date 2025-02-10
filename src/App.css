@@ -1,0 +1,78 @@
+.contactPG{
+
+background-color: #c9fdd5;
+}
+.TXT{
+    color: black;
+}
+.BGC{
+
+    background-color: #ffffff;
+}
+.dpdown{
+    background-color: #c9fdd5 !important;
+}
+
+
+
+/* Custom CSS for scrollable content */
+.ant-layout-content {
+    overflow-y: auto;
+    height: calc(100vh - 64px); /* Full height minus the header */
+  }
+  
+  /* Optional: Custom font for the sidebar */
+  .ant-layout-sider {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Optional: Adding hover effect on menu items */
+  .ant-menu-item:hover {
+    background-color: #1a7cbc !important;
+  }
+  .ant-menu-item-selected{
+    background-color: #1a7cbc !important;
+  }
+
+  .ant-menu-item-selected span{
+    color: #ffffff;
+}
+
+  .ant-menu-item{
+     color: #565656!important;
+  }
+.ant-menu-item span,.ant-menu-item-icon {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.ant-menu-item span:hover{
+    color: #ffffff;
+}
+  .ant-menu-dark{
+    background-color: #ffffff !important
+  }
+  .ant-layout-sider-trigger{
+    background-color: #90dfff !important
+  }
+
+  .ant-layout-sider-trigger span{
+    color: #1a7cbc;
+    font-size: 20px;
+  }
+  .ant-layout-content{
+    background: #eeeef3!important;
+  }
+  .ant-card-head-title{
+    font-size: 25px;
+    font-weight: 300;
+  }
+  .ant-card-body{
+    font-size: 25px;
+    font-weight: 600;
+  }
+
+  .SecCol{
+    margin-top: 25px !important;
+   
+  }

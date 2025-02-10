@@ -15,6 +15,7 @@ import { useAuth } from "./contex/useAuth.jsx";
 import { PaymentSucess } from "./pages/PaymentSucess.jsx";
 import PaymentFailed from "./pages/PaymentFailed.jsx";
 import { ContactPage } from "./pages/Contact.jsx";
+import { UpdateInfCom } from "./components/UpdateInfCom.jsx";
 
 function App() {
   const { user } = useAuth();
@@ -55,6 +56,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/profile" element={<UpdateInfCom />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -16,10 +16,11 @@ import { AllOverview } from "./AllOverview.jsx";
 const { Sider, Content } = Layout;
 
 export const UserDashboardComponents = () => {
-  const [activeTab, setActiveTab] = useState("overview");
   const { user } = useAuth();
   const [collapsed, setCollapsed] = useState(false);
-
+  
+  const defaultTab = user.account_type === "User" ? "allpark" : "overview";
+  const [activeTab, setActiveTab] = useState(defaultTab);
 
   const menuItems = [
     ...(user.account_type !== "User"

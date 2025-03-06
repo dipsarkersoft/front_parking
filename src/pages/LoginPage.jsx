@@ -12,12 +12,12 @@ export const LoginPage = () => {
   const [loading, setLoading] = useState(false);
 
   const handleuser = async (e) => {
-    setUsername("user")
+    setUsername("buyer")
     setPassword("12345ddd")
   }
 
   const handleOwner = async (e) => {
-    setUsername("owner")
+    setUsername("demo1")
     setPassword("12345ddd")
     
   }

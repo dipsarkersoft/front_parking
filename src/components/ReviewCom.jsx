@@ -54,8 +54,10 @@ export const ReviewCom = () => {
     <div>
 
 
-<div className="container my-5 ">
-      <div className="text-center mb-4">
+<div className="container-fluid reviewSec my-5 ">
+  <div className="container">
+      
+      <div className="text-center   mb-4">
         <h2>What Our Users Say</h2>
         <p className="lead">Real reviews from our satisfied customers.</p>
       </div>
@@ -104,7 +106,7 @@ export const ReviewCom = () => {
       </Swiper>
     </div>
 
-
+    </div>
 
 
     </div>

@@ -76,3 +76,74 @@ background-color: #c9fdd5;
     margin-top: 25px !important;
    
   }
+
+  .serviceP{
+    background: rgb(238, 238, 238);
+    /* margin: 0px 20px; */
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 30px 20px;
+    border-radius: 5px;
+  }
+  .serviceT{
+    background: #7cab8130;
+    padding: 30px 20px;
+    border-radius: 5px;
+  }
+
+
+  .Ads1{
+
+    background-color: #0096db;
+    padding: 40px 0px
+  }
+
+  .Adsc1{
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+  }
+
+
+
+.btnBookSlot a{
+  text-decoration: none;
+  background-color: #0096db; 
+  color: white; 
+  font-size: 1.2rem; 
+  padding: 15px 30px; 
+  border-radius: 5px; 
+  
+  font-weight: 600;
+ 
+  text-align: center; 
+  cursor: pointer; 
+  transition: all 0.3s ease-in-out; 
+ 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effect */
+.btnBookSlot a:hover {
+  background-color: #5960eb; 
+  transform: scale(1.05); 
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 0 4px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+
+
+
+.btnBookSlot a:focus {
+  outline: none;
+}
+
+.reviewSec{
+  background: #dff3e7;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.navbar-nav{
+  text-transform: UPPERCASE;
+  font-weight: 600;
+}

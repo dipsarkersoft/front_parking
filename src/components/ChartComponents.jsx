@@ -131,9 +131,13 @@ export const ChartComponents = () => {
   }, []);
 
   return (
-    <div className='mt-5'>
-      <h4>Monthly Revenue Chart</h4>
-      <div className="card m-4">
+    <div className=''>
+
+    <h4 className='mt-2 mb-4'>Monthly Revenue Chart</h4>
+      
+      <div className="card">
+
+      
         <canvas ref={chartRef}></canvas>
       </div>
     </div>

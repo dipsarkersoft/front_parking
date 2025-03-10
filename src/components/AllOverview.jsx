@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Card, Col, Row } from "antd";
 import { ChartComponents } from "./ChartComponents";
 import { allCategoryAPI } from "../api/allapi";
+import { MdDashboard } from "react-icons/md";
 
 export const AllOverview = () => {
 
@@ -41,7 +42,15 @@ export const AllOverview = () => {
   return (
     <>
    
-      <h4 className="p-2 fw-5">Dashboard</h4>
+      <h4 className="p-2 fw-5 text-align center">
+      
+        Dashboard
+        </h4>
+      <div className="dashboardCard">
+
+
+
+      <h4 className="mb-3 fw-5">Overview</h4>
       <Row gutter={[40, 40]}>
         <Col span={12}>
           <Card
@@ -84,8 +93,9 @@ export const AllOverview = () => {
           </Card>
         </Col>
       </Row>
+      </div>
 
-      <div className="div">
+      <div className="chartcompo">
         <ChartComponents/>
       </div>
     </>

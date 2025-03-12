@@ -1,0 +1,78 @@
+  /* Center the loader */
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    z-index: 500000 !important;
+    
+  }
+  
+  /* Spinner animation */
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 255, 0.2);
+    border-top-color: blue;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Animation Keyframes */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  .loader {
+    width: 50px;
+    aspect-ratio: 1; /* Ensures the loader stays a perfect circle */
+    display: grid;
+    border: 4px solid #0000;
+    border-radius: 50%;
+    border-color: #ccc #0000; /* Outer border color */
+    animation: l16 1s infinite linear; /* Animation to rotate the loader */
+  }
+  
+  .loader::before,
+  .loader::after {
+    content: "";
+    grid-area: 1/1; /* Ensures the pseudo-elements overlap the loader */
+    margin: 2px;
+    border: inherit; /* Inherit the loader's border style */
+    border-radius: 50%; /* Make the pseudo-elements circular */
+  }
+  
+  .loader::before {
+    border-color: #f03355 #0000; /* Inner border color (red with transparency) */
+    animation: inherit; /* Inherit the rotation animation from the parent */
+    animation-duration: 0.5s; /* Animation duration for the before element */
+    animation-direction: reverse; /* Spin the before element in the opposite direction */
+  }
+  
+  .loader::after {
+    margin: 8px; /* Separate the inner spinner */
+  }
+  
+  @keyframes l16 {
+    100% {
+      transform: rotate(1turn); /* Complete one full rotation */
+    }
+  }
+
+  .spinnerbtn {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #40f37e;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    display: inline-block;
+    margin-left: 8px;
+  }

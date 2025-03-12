@@ -16,6 +16,9 @@ import { PaymentSucess } from "./pages/PaymentSucess.jsx";
 import PaymentFailed from "./pages/PaymentFailed.jsx";
 import { ContactPage } from "./pages/Contact.jsx";
 import { UpdateInfCom } from "./components/UpdateInfCom.jsx";
+import { LoadingCom } from "./components/utils/LoadingCom.jsx";
+import { LoadingComponent } from "./components/utils/LoadingComponent.jsx";
+import { Loadingd } from "./components/utils/Loadingd.jsx";
 
 function App() {
   const { user } = useAuth();
@@ -27,15 +30,15 @@ function App() {
         <Navbar />
 
         <Routes>
+          {user ? (
+            <>
+              <Route path="payment/sucess/:id/" element={<PaymentSucess />} />
 
-  { user? <>
-  
-    <Route path="payment/sucess/:id/" element={<PaymentSucess/>} />
-
-     <Route path="payment/failed" element={<PaymentFailed/>} />
-  </> :<></>}
-
-        
+              <Route path="payment/failed" element={<PaymentFailed />} />
+            </>
+          ) : (
+            <></>
+          )}
 
           <Route element={<PrivateRoute role="User" />}>
             <Route path="/dashboard" element={<UserDashboard />} />
@@ -51,12 +54,16 @@ function App() {
             />
           </Route>
 
-          <Route path="/" element={<HomePage />} />
           <Route path="/service" element={<ServicePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/profile" element={<UpdateInfCom />} />
+
+          <Route path="/" element={<HomePage />} />
+          
+          {/* <Route path="/" element={<LoadingComponent />} /> */}
+          {/* <Route path="/" element={<Loadingd />} /> */}
         </Routes>
       </BrowserRouter>
     </>

@@ -67,7 +67,7 @@ export const GetCarComp = () => {
       const res=await cheakTotalBill(token,body,id)
 
       setCheakbilInf(res);
-      toast.error(res.message);
+      toast.success(res.message);
       console.log(cheakbilInf)
     } 
     else {

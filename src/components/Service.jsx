@@ -12,13 +12,24 @@ import {
 import carimg from "../assets/img/c.jpg";
 import { CgOptions } from "react-icons/cg";
 import { BiCategoryAlt } from "react-icons/bi";
+import { LoadingComponent } from "./utils/LoadingComponent.jsx";
 
 export const Service = () => {
   const [allCat, setAllCat] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const AllCategory = async () => {
-    const data = await allCategoryAPI();
-    setAllCat(data);
+    try {
+      setLoading(true);
+      const data = await allCategoryAPI();
+      if (data) {
+        setLoading(false);
+        setAllCat(data);
+      }
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
   };
 
   useState(() => {
@@ -28,37 +39,48 @@ export const Service = () => {
   return (
     <>
       <div className="container serviceT  mt-4">
-        <h2 className="mb-3"> <BiCategoryAlt color="#14be3d" size={48} /> Vehicle Categories All list and Price </h2>
+        <h2 className="mb-3">
+          <BiCategoryAlt color="#14be3d" size={48} /> Vehicle Categories All
+          list and Price
+        </h2>
 
-        <table className="table tble table-bordered table-hover">
-          <thead className="">
-            <tr>
-              <th>Name</th>
-              <th>Price per Hour (TK)</th>
-              <th>Total Slots</th>
-              <th>Available Slots</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allCat.map((category, index) => (
-              <tr key={category.id}>
-                <td>{category.name}</td>
-                <td>TK {category.price_p_h}</td>
-                <td>{category.total_slots}</td>
-                <td>{category.available_slots}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {loading ? (
+          <>
+            <LoadingComponent />
+          </>
+        ) : (
+          <>
+            <table className="table tble table-bordered table-hover">
+              <thead className="">
+                <tr>
+                  <th>Name</th>
+                  <th>Price per Hour (TK)</th>
+                  <th>Total Slots</th>
+                  <th>Available Slots</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allCat.map((category, index) => (
+                  <tr key={category.id}>
+                    <td>{category.name}</td>
+                    <td>TK {category.price_p_h}</td>
+                    <td>{category.total_slots}</td>
+                    <td>{category.available_slots}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
       </div>
 
       <div className="container serviceP">
-       <h2><CgOptions color="#14be3d" size={48} />   Parking Options</h2>
+        <h2>
+          <CgOptions color="#14be3d" size={48} /> Parking Options
+        </h2>
         <div className="row p-3 ">
           <div className="col-md-4 mb-4">
-        
             <div className="card my-3 border-0">
-              
               <div className="card-body d-flex gap-4 align-items-center">
                 <div className="text-end">
                   <h3 className="card-title py-2 ">Valet Parking</h3>

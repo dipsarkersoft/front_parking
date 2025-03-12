@@ -7,6 +7,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { AuthProvider } from './contex/useAuth.jsx';
 import 'swiper/css';
 import "antd/dist/reset.css";
+import "./assets/css/all.css"
 
 
 createRoot(document.getElementById('root')).render(

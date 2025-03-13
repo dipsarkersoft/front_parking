@@ -234,7 +234,7 @@ export const backVehicals = async (token, body,id) => {
   
   
   export const cheakTotalBill = async (token,body,id) => {
-    const { data } = await axios.put(`${URL}parking/cheaktotal/${id}`,body, {
+    const  {data}  = await axios.put(`${URL}parking/cheaktotal/${id}`,body, {
       headers: {
         Authorization: `Token ${token}`,
         "Content-Type": "application/json",

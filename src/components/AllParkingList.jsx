@@ -119,7 +119,7 @@ export const AllParkingList = () => {
                         <td>
                           {record.is_complete ? (
                             <>
-                              <button
+                              {/* <button
                                 className="btn btn-success btn-sm me-2"
                                 onClick={() => handleReview(record.id)}
                               >
@@ -131,6 +131,13 @@ export const AllParkingList = () => {
                                 onClick={() => handleDelete(record.id)}
                               >
                                 Delete
+                              </button> */}
+
+                             <button
+                                className="btn btn-danger btn-sm"
+                                // onClick={() => handleDelete(record.id)}
+                              >
+                                Completed
                               </button>
                             </>
                           ) : (

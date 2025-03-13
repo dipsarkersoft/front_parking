@@ -28,7 +28,10 @@ export const ParingCreateCom = () => {
   const [loading, setLoading] = useState(false);
   const [loadingFull, setLoadingFull] = useState(false);
   const [loadingbtn, setLoadingbtn] = useState(false);
+  const [d, setD] = useState("");
 
+
+ 
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
@@ -104,7 +107,7 @@ export const ParingCreateCom = () => {
         setLoadingbtn(true)
 
         const data = await createParking(token, body);
-        console.log(data);
+       
         if (data?.status == 201) {
           setCreateRes(data?.data);
           setLoadingbtn(false)
@@ -205,8 +208,8 @@ export const ParingCreateCom = () => {
                 </div>
                 <div className="mb-3">
                   <label className="form-label text-danger fw-semibold">
-                    {" "}
-                    Select Your Parking Date to Sea Available{" "}
+                  
+                    Select Your Parking Date to Sea Available
                   </label>
                   <Space direction="vertical" size={12}>
                     <RangePicker
@@ -228,14 +231,19 @@ export const ParingCreateCom = () => {
                           <div className="row p-3">
                             {availableSlots.map((slot) => (
                               <>
-                                {console.log(slot)}
+                              
                                 <div key={slot.id} className="col-2 m-1">
                                   <p className="text-center">
                                     {slot.slot_number}
                                   </p>
                                   <button
                                     className="btn btn-success w-100"
-                                    onClick={() => setParkingSlot(slot.id)}
+                                    onClick={() =>{ 
+
+                                      setParkingSlot(slot.id)
+                                      setD(slot.slot_number)
+                                    }
+                                    }
                                   >
                                     <FaCheck color="#e91e63" />
                                   </button>
@@ -282,14 +290,14 @@ export const ParingCreateCom = () => {
                 <h4 className="mb-3">Parking Slot Selection</h4>
 
                 <li className="list-group-item">
-                  <strong>Available Slots:</strong>{" "}
+                  <strong>Available Slots:</strong>
                   {categoryinf?.available_slots || "Not selected"}
                 </li>
 
                 <h6 className="mt-3">Overview</h6>
                 <ul className="list-group mb-3">
                   <li className="list-group-item">
-                    <strong>Category:</strong>{" "}
+                    <strong>Category:</strong>
                     {categoryinf ? categoryinf.name : "Not selected"}
                   </li>
 
@@ -297,8 +305,8 @@ export const ParingCreateCom = () => {
                     <strong>Car Name:</strong> {carName || "Not selected"}
                   </li>
                   <li className="list-group-item">
-                    <strong>Parking Slot:</strong>{" "}
-                    {parkingSlot || "Not selected"}
+                    <strong>Parking Slot:</strong>
+                    {d || "Not selected"}
                   </li>
                 </ul>
 

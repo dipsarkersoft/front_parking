@@ -1,13 +1,8 @@
-
-
-
-
 import React from 'react';
 import '../assets/css/Footer.css';
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import bimage from "../assets/img/sslcommerz-banner.png"
-
 
 export const Footer = () => {
   return (
@@ -47,15 +42,17 @@ export const Footer = () => {
             </div>
           </div>
 
-         
           <div className="text-center mt-4">
-            <img 
-              src={bimage}
-              alt="SSLCommerz Payment Gateway" 
-              className="img-fluid" 
-              style={{ maxWidth: "500px" }} 
-            />
-          </div>
+  <img
+    src={bimage}
+    alt="SSLCommerz Payment Gateway"
+    className="img-fluid"
+    style={{ maxWidth: "100%", height: "auto" }}
+  />
+</div>
+
+
+
         </div>
 
         {/* Copyright */}
@@ -66,3 +63,4 @@ export const Footer = () => {
     </div>
   );
 };
+

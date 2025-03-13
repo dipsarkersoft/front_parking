@@ -1,78 +1,249 @@
-  /* Center the loader */
-  .loading-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-    z-index: 500000 !important;
-    
+/* Center the loader */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  z-index: 500000 !important;
+}
+
+/* Spinner animation */
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 255, 0.2);
+  border-top-color: blue;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Animation Keyframes */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  /* Spinner animation */
-  .loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(0, 0, 255, 0.2);
-    border-top-color: blue;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  /* Animation Keyframes */
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1; /* Ensures the loader stays a perfect circle */
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-color: #ccc #0000; /* Outer border color */
+  animation: l16 1s infinite linear; /* Animation to rotate the loader */
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1; /* Ensures the pseudo-elements overlap the loader */
+  margin: 2px;
+  border: inherit; /* Inherit the loader's border style */
+  border-radius: 50%; /* Make the pseudo-elements circular */
+}
+
+.loader::before {
+  border-color: #f03355 #0000; /* Inner border color (red with transparency) */
+  animation: inherit; /* Inherit the rotation animation from the parent */
+  animation-duration: 0.5s; /* Animation duration for the before element */
+  animation-direction: reverse; /* Spin the before element in the opposite direction */
+}
+
+.loader::after {
+  margin: 8px; /* Separate the inner spinner */
+}
+
+@keyframes l16 {
+  100% {
+    transform: rotate(1turn); /* Complete one full rotation */
   }
+}
+
+.spinnerbtn {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #40f37e;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.premium-card {
+  border: 1px dashed #151515;
+  border-radius: 10px;
+  max-width: 300px;
+  background-color: #ffffff;
+  transition: all 0.3s ease-in-out;
+}
+
+.premium-card:hover {
+  border: 1px dashed #06dc06;
+}
+
+.premium-price {
+  font-size: 48px;
+  font-weight: 700;
+  color: #40f37e;
+}
+.premium-price sub {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.pricess {
+  font-size: 48px;
+  font-weight: bold;
+  color: #40f37e;
+}
+.animated-btn {
+  font-size: 18px;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  background-color: #20d25e;
+}
+
+.animated-btn:hover {
+  background-color: #7094f9;
+  transform: scale(1.1);
+  border: none;
+  box-shadow: 0 4px 10px rgba(86, 247, 50, 0.788);
+}
+
+@media (max-width: 767px) {
+  .premium-card {
+    margin: 0 auto;
+    width: 90%;
+  }
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+}
+
+.feature-card .icon {
+  font-size: 40px;
+  color: #40f37e;
+  border: 1px dashed #7ef5a2;
+  padding: 15px 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.featuresmain {
+  background-color: #f6f7f8;
+}
+.feature-card p {
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .feature-card {
+    margin: 0 auto; /* Center the card */
+    width: 90%; /* Adjust width */
+  }
+}
+
+.carousel-item {
+  position: relative;
+}
+
+/* .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
+
+.carousel-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(54, 54, 54, 0.243),
+    rgba(0, 0, 0, 0.35)
+  );
+  z-index: 1;
+}
+
+.carousel-item a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  background: linear-gradient(rgba(57, 54, 48, 0.7), rgba(255, 181, 36, 0.7));
+  color: #fff;
+  z-index: 2;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid;
+  background: #00ff00;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.carousel-control-next {
+  margin-right: 20px;
+}
+
+.carousel-control-prev {
+  margin-left: 20px;
+}
+
+.custom-caption {
+  background: rgba(255, 237, 237, 0.5); /* Dark overlay */
+  padding: 15px;
+  border-radius: 10px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.custom-caption h3 {
+  color: #d8ffb4;
+}
 
 
-  .loader {
-    width: 50px;
-    aspect-ratio: 1; /* Ensures the loader stays a perfect circle */
-    display: grid;
-    border: 4px solid #0000;
-    border-radius: 50%;
-    border-color: #ccc #0000; /* Outer border color */
-    animation: l16 1s infinite linear; /* Animation to rotate the loader */
-  }
-  
-  .loader::before,
-  .loader::after {
-    content: "";
-    grid-area: 1/1; /* Ensures the pseudo-elements overlap the loader */
-    margin: 2px;
-    border: inherit; /* Inherit the loader's border style */
-    border-radius: 50%; /* Make the pseudo-elements circular */
-  }
-  
-  .loader::before {
-    border-color: #f03355 #0000; /* Inner border color (red with transparency) */
-    animation: inherit; /* Inherit the rotation animation from the parent */
-    animation-duration: 0.5s; /* Animation duration for the before element */
-    animation-direction: reverse; /* Spin the before element in the opposite direction */
-  }
-  
-  .loader::after {
-    margin: 8px; /* Separate the inner spinner */
-  }
-  
-  @keyframes l16 {
-    100% {
-      transform: rotate(1turn); /* Complete one full rotation */
-    }
-  }
 
-  .spinnerbtn {
-    width: 1rem;
-    height: 1rem;
-    border: 2px solid #40f37e;
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: spin 0.6s linear infinite;
-    display: inline-block;
-    margin-left: 8px;
-  }
+/* galary */
+
+
+/* Optional: Tab buttons without borders */
+.nav-tabs .nav-link {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+/* Highlight active tab with a subtle underline */
+.nav-tabs .nav-link.active {
+  border-bottom: 2px solid #007bff; /* Blue underline for active tab */
+  color: #007bff; /* Active tab text color */
+}
+
+/* Remove borders around the modal content */
+.modal-content {
+  border: none;
+  border-radius: 10px;
+}
+
+/* Modal background transparency */
+.modal.fade.show {
+  background-color: rgba(0, 0, 0, 0.7);
+}

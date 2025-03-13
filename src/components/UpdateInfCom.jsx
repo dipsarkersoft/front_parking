@@ -4,6 +4,8 @@ import { authenticated_user, updateUserInf } from "../api/allapi";
 import toast from "react-hot-toast";
 import { LoadingCom } from "./utils/LoadingCom.jsx";
 import { LoadingComponent } from "./utils/LoadingComponent.jsx";
+import imgdemo from "../assets/img/profile.png"
+ 
 
 export const UpdateInfCom = () => {
   const [email, setEmail] = useState("");
@@ -61,6 +63,20 @@ export const UpdateInfCom = () => {
     }
   };
 
+
+
+  const [image, setImage] = useState(null);
+
+ 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      
+      const imageUrl = URL.createObjectURL(file);
+      setImage(imageUrl);
+    }
+  };
+
   useEffect(() => {
     UserInf();
   }, []);
@@ -77,63 +93,102 @@ export const UpdateInfCom = () => {
             </>
           ) : (
             <>
-              <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label className="form-label">Email</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">First Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                </div>
+              
 
-                <div className="mb-3">
-                  <label className="form-label">Last Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Mobile No</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={mobileNo}
-                    onChange={(e) => setMobileNo(e.target.value)}
-                  />
-                </div>
 
-                <button
-                 
-                  disabled={loading}
-                  className={`btn btn-primary w-25 ${loading?"bg-secoundary text-dark " :"" } `} 
-                >
-                  {loading ? (
-                        <>
-                            Upadate...
-                          <span className="spinnerbtn"></span>
-                        </>
-                      ) : (
-                        "Upadate"
-                      )}
 
+<form onSubmit={handleSubmit}>
+                  <div className="d-flex">
+                    
+                      <div className="col-md-5 d-flex justify-content-center align-items-center">
+                        <div className="image-upload-container">
+                          {/* Image Preview */}
+                          <img
+                              src={image || imgdemo}
+                            alt="Profile"
+                            className="rounded-circle"
+                            style={{
+                              width: "150px",
+                              height: "150px",
+                              objectFit: "cover",
+                              border: "2px solid #ddd",
+                            }}
+                          />
+                          {/* File Input */}
+                          
+                        </div>
+                      </div>
+                    
+
+                    <div className="col-md-7">
+                      <div className="mb-3">
+                        <label className="form-label">Email</label>
+                        <input
+                          type="email"
+                          className="form-control"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <label className="form-label">First Name</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          value={firstName}
+                          onChange={(e) => setFirstName(e.target.value)}
+                        />
+                      </div>
+
+                      <div className="mb-3">
+                        <label className="form-label">Last Name</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          value={lastName}
+                          onChange={(e) => setLastName(e.target.value)}
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <label className="form-label">Mobile No</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          value={mobileNo}
+                          onChange={(e) => setMobileNo(e.target.value)}
+                        />
+                      </div>
+                      <div className="mb-3">
+                       
+                        <input
+                            type="file"
+                            accept="image/*"
+                              onChange={handleImageChange}
+                            className="form-control mt-2"
+                          />
+                      </div>
+
+                      <button
+                    disabled={loading}
+                    type="submit"
+                    className="btn btn-primary"
+                  >
+                    {loading ? (
+                      <>
+                        Update
+                        <span className="spinnerbtn"></span>
+                      </>
+                    ) : (
+                      " Update"
+                    )}
+                  </button>
+                    </div>
+
+                    
+                  </div>
 
                 
-                </button>
-              </form>
+                </form>
             </>
           )}
         </div>

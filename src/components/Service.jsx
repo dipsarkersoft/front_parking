@@ -50,13 +50,13 @@ export const Service = () => {
           </>
         ) : (
           <>
-            <table className="table tble table-bordered table-hover">
+            <table className="table tble m-2 table-bordered table-hover">
               <thead className="">
                 <tr>
                   <th>Name</th>
                   <th>Price per Hour (TK)</th>
                   <th>Total Slots</th>
-                  <th>Available Slots</th>
+                 
                 </tr>
               </thead>
               <tbody>
@@ -65,7 +65,7 @@ export const Service = () => {
                     <td>{category.name}</td>
                     <td>TK {category.price_p_h}</td>
                     <td>{category.total_slots}</td>
-                    <td>{category.available_slots}</td>
+                  
                   </tr>
                 ))}
               </tbody>

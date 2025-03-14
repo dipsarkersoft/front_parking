@@ -12,6 +12,8 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import { AllOverview } from "./AllOverview.jsx";
+import { CategoryList } from "./CategoryList.jsx";
+import { CiBoxList } from "react-icons/ci";
 
 const { Sider, Content } = Layout;
 
@@ -21,6 +23,9 @@ export const UserDashboardComponents = () => {
   
   const defaultTab = user.account_type === "User" ? "allpark" : "overview";
   const [activeTab, setActiveTab] = useState(defaultTab);
+ 
+  
+
 
   const menuItems = [
     ...(user.account_type !== "User"
@@ -37,21 +42,39 @@ export const UserDashboardComponents = () => {
             label: "Category",
             onClick: () => setActiveTab("categoryCreate"),
           },
+          {
+            key: "categorylist",
+            icon: <CiBoxList />,
+            label: "Category List",
+            onClick: () => setActiveTab("categorylist"),
+          },
+          {
+            key: "allpark",
+            icon: <HomeOutlined />,
+            label: user.account_type=="Owner" ? "Parking List" :"My Parking List" ,
+            onClick: () => setActiveTab("allpark"),
+          },
         ]
-      : []),
+      : [
 
-    {
-      key: "allpark",
-      icon: <HomeOutlined />,
-      label: "My Parking List",
-      onClick: () => setActiveTab("allpark"),
-    },
-    {
-      key: "Park_Vehicales",
-      icon: <CarOutlined />,
-      label: "Park Vehicles",
-      onClick: () => setActiveTab("Park_Vehicales"),
-    },
+        {
+          key: "allpark",
+          icon: <HomeOutlined />,
+          label: user.account_type=="Owner" ? "Parking List" :"My Parking List" ,
+          onClick: () => setActiveTab("allpark"),
+        },
+        {
+          key: "Park_Vehicales",
+          icon: <CarOutlined />,
+          label: "Park Vehicles",
+          onClick: () => setActiveTab("Park_Vehicales"),
+        },
+
+
+
+      ]),
+
+    
     
   ];
 
@@ -82,6 +105,7 @@ export const UserDashboardComponents = () => {
           {activeTab === "allpark" && <AllParkingList key={activeTab} />}
           {activeTab === "Park_Vehicales" && <ParkingCreatePage key={activeTab} />}
           {activeTab === "categoryCreate" && <CategoryCreate key={activeTab} />}
+          {activeTab === "categorylist" && <CategoryList key={activeTab} />}
           {activeTab === "overview" && <AllOverview key={activeTab} />}
         </Content>
       </Layout>

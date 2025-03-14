@@ -197,11 +197,11 @@ export const ParingCreateCom = () => {
                 </div>
 
                 <div className="mb-3">
-                  <label className="form-label">Car Name</label>
+                  <label className="form-label">Vehicle  Name</label>
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Enter car name"
+                    placeholder="Enter Vehicle name"
                     value={carName}
                     onChange={(e) => setCarName(e.target.value)}
                   />

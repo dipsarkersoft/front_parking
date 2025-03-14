@@ -1,107 +1,118 @@
-import React, { useState } from 'react';
+import { useState } from "react";
+import s1 from "../assets/img/slid1.jpg"
+import s2 from "../assets/img/slide2.jpg"
+import s3 from "../assets/img/slide3.jpg"
+import s4 from "../assets/img/slide4.jpg"
+import s5 from "../assets/img/slide5.jpg"
+import s6 from "../assets/img/slide6.jpg"
+import s7 from "../assets/img/slide7.jpg"
+import s8 from "../assets/img/slide8.jpg"
+import s9 from "../assets/img/slide9.jpg"
+import s10 from "../assets/img/slide6.png"
+
 
 export const GalaryPage = () => {
-  const [modalImage, setModalImage] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeTab, setActiveTab] = useState("html"); // Default tab
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  // Image categories
-  const images = {
-    all: [
-      { id: 1, src: 'https://picsum.photos/400/250?image=122', alt: 'Image 1' },
-      { id: 2, src: 'https://picsum.photos/400/250?image=526', alt: 'Image 2' },
-      { id: 3, src: 'https://picsum.photos/400/250?image=626', alt: 'Image 3' },
-      { id: 4, src: 'https://picsum.photos/400/250?image=846', alt: 'Image 4' },
-    ],
-    category1: [
-      { id: 1, src: 'https://picsum.photos/400/250?image=122', alt: 'Image 1' },
-      { id: 2, src: 'https://picsum.photos/400/250?image=526', alt: 'Image 2' },
-    ],
-    category2: [
-      { id: 3, src: 'https://picsum.photos/400/250?image=626', alt: 'Image 3' },
-      { id: 4, src: 'https://picsum.photos/400/250?image=846', alt: 'Image 4' },
-    ],
-  };
-
-  const handleImageClick = (src) => {
-    setModalImage(src);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleTabClick = (category) => {
-    setActiveTab(category);
-  };
+  const data = [
+    {
+      label: "All",
+      value: "all",
+      images: [
+        s1,s2,s3,s4,s10,s6, s5,s6,s7,s8,s9
+      ],
+    },
+    {
+      label: "Drivers",
+      value: "drivers",
+      images: [
+        s4,s1,s2,s3,s5,s9,s1
+      ],
+    },
+    {
+      label: "Passengers",
+      value: "passengers",
+      images: [
+       s5,s6,s7,s8,s9,s1
+      ],
+    },
+  ];
 
   return (
-    <div className="container mt-5">
-      <h1 className="text-center mb-4">Image Gallery</h1>
-
-      {/* Tab navigation */}
-      <ul className="nav nav-tabs justify-content-center border-0">
-        <li className="nav-item">
-          <button
-            className={`nav-link ${activeTab === 'all' ? 'active' : ''} border-0`}
-            onClick={() => handleTabClick('all')}
-          >
-            All
-          </button>
-        </li>
-        <li className="nav-item">
-          <button
-            className={`nav-link ${activeTab === 'category1' ? 'active' : ''} border-0`}
-            onClick={() => handleTabClick('category1')}
-          >
-            Category 1
-          </button>
-        </li>
-        <li className="nav-item">
-          <button
-            className={`nav-link ${activeTab === 'category2' ? 'active' : ''} border-0`}
-            onClick={() => handleTabClick('category2')}
-          >
-            Category 2
-          </button>
-        </li>
-      </ul>
-
-      {/* Gallery content based on active tab */}
-      <div className="row justify-content-center mt-3">
-        {images[activeTab].map((image) => (
-          <div className="col-md-3 mb-4" key={image.id}>
-            <div
-              className="gallery-item"
-              onClick={() => handleImageClick(image.src)}
-              style={{ cursor: 'pointer' }}
+    <>
+      <div className="gallery-container  mt-5">
+        {/* Tabs Navigation */}
+        <div className="tabs">
+          {data.map(({ label, value }) => (
+            <button
+              key={value}
+              className={`tab ${activeTab === value ? "active" : ""}`}
+              onClick={() => setActiveTab(value)}
             >
-              <img src={image.src} alt={image.alt} className="img-fluid rounded-3" />
-            </div>
+              {label}
+            </button>
+          ))}
+        </div>
+
+        
+
+        <div className="container">
+          <div className="row">
+            {data
+              .find((category) => category.value === activeTab)
+              ?.images.map((image, index) => (
+                <div key={index} className="col-md-4 mb-3">
+                  <div className="image-item">
+                    <img
+                      className="modal-fullscreen img-fluid rounded"
+                      src={image}
+                      alt="Gallery"
+                      style={{ cursor: "pointer" }}
+                      data-bs-toggle="modal"
+                      data-bs-target="#imageModal"
+                      onClick={() => setSelectedImage(image)}
+                    />
+                  </div>
+                </div>
+              ))}
           </div>
-        ))}
+        </div>
       </div>
 
-      {/* Modal for enlarged image */}
-      {isModalOpen && (
-        <div
-          className="modal fade show"
-          style={{ display: 'block', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
-          onClick={handleCloseModal}
-        >
-          <div className="modal-dialog modal-lg">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button type="button" className="btn-close" onClick={handleCloseModal}></button>
-              </div>
-              <div className="modal-body">
-                <img src={modalImage} alt="Enlarged" className="img-fluid w-100" />
-              </div>
+      {/* Bootstrap Modal */}
+      <div
+        className="modal fade"
+        id="imageModal"
+        tabIndex="-1"
+        aria-labelledby="imageModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-lg modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="imageModalLabel">
+               Our Images Galary 
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body text-center">
+              {selectedImage && (
+                <img
+                  src={selectedImage}
+                  alt="Selected"
+                  className="img-fluid rounded"
+                />
+              )}
             </div>
           </div>
         </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 };

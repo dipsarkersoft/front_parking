@@ -20,6 +20,7 @@ import { LoadingCom } from "./components/utils/LoadingCom.jsx";
 import { LoadingComponent } from "./components/utils/LoadingComponent.jsx";
 import { Loadingd } from "./components/utils/Loadingd.jsx";
 import { GalaryPage } from "./components/GalaryPage.jsx";
+import { Loadingprac } from "./pages/Loadingprac.jsx";
 
 function App() {
   const { user } = useAuth();
@@ -88,9 +89,11 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<Navigate to="/login" />} />
           
 
           <Route path="/" element={<HomePage />} />
+          {/* <Route path="/" element={<Loadingprac />} /> */}
 
           {/* <Route path="/" element={<LoadingComponent />} /> */}
           {/* <Route path="/" element={<Loadingd />} /> */}

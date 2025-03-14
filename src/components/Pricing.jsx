@@ -50,7 +50,7 @@ export const Pricing = () => {
                 <span>800</span>
                 <sub>/day</sub>
               </div>
-              <h2 className="mt-4 fw-bolder">Standard</h2>
+              <h2 className="mt-4 fw-bolder">Platinum</h2>
               <p className="text-secondary">
                 Basic parking plan with security and time-based pricing.
               </p>
